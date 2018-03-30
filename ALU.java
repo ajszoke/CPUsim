@@ -1,3 +1,9 @@
+/*
+ * This is the ALU for the processor and handles the arithmetic and logical operations. It is supplied with an opcode
+ * and two arguments (the second one is unused in cases of operations with only one argument). It returns a byte array
+ * representing the output of the function specified.
+ */
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.Arrays;
@@ -14,6 +20,7 @@ public class ALU {
 		this.p = _p;
 	}
 	
+	// Decode the opcode provided and route the inputs to the correct function
 	public void process() {
 		switch (aluOp) {
 		case "00100":
@@ -87,12 +94,19 @@ public class ALU {
 			break;
 		}
 		
+		// set flags, if needed
 		if(res.equals(Processor.NAN) || res.equals(Processor.POS_INFINITY) || res.equals(Processor.NEG_INFINITY)) {
 			p.X = true;
 		}
 		p.memBlk.data = res;
 		p.memBlk.writeData();
 	}
+	
+	/*
+	 * The ALU's functions are listed below. In each case, a new byte[4] is created to hold the result of the function.
+	 * The input byte arrays are cast to floats for the sake of simplicity for the mathematical operations, then cast
+	 * back to byte arrays for storage in the processors. Flags are set for the controller wherever appropriate.
+	 */
 	
 	public byte[] add(byte[] Rj, byte[] Rk) {
 		byte[] result = new byte[4];
