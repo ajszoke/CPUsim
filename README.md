@@ -46,3 +46,9 @@ Opcode | Instruction Name | Format | Meaning
 ## Setup
 
 To run the program, simply compile the Java classes and run the Driver class. The class will then ask you for the filename of the program you wish to run.
+
+## Test File Descriptions
+
+* `test1.txt`: Computes the force (in Newtons) required to move a 100 kg object up a 30 degree ramp at constant speed.
+* `test2.txt`: Finds the gravitational force of two masses (2.3 kg and 5.7 kg) separated by a distance of 13.2 m.
+* `test3.txt`: Computes the quadratic formula for a = 2, b = 5, and c = 2.
