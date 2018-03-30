@@ -1,3 +1,7 @@
+/*
+ * This class is simply used to set enable flags depending on the opcode from the instruction provided.
+ */
+
 public class Control {
 	
 	boolean regWrite;
