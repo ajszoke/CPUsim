@@ -1,3 +1,5 @@
+// This class interfaces between individual registers and the rest of the processor logic.
+
 public class MemoryBlock {
 	
 	int addr = -1;
