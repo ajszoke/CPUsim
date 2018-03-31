@@ -50,7 +50,7 @@ public class Processor {
 		String opcode;
 		
 		while (true) {
-			instBytes = im.fetchNext();
+			instBytes = im.fetchNext(); // fetches next instruction to execute
 			if (Arrays.equals(instBytes, NAN)) break;
 			inst = bytes2String(instBytes);
 			opcode = inst.substring(0, 5);
@@ -72,6 +72,7 @@ public class Processor {
 					readData2 = ByteBuffer.allocate(4).putFloat(dataFlt).array();
 			}
 			
+			// output raw instruction machine code to the console
 			printInst(inst, opcode, writeReg, readReg1, readReg2, dataFlt);
 			
 			// control flow for non-ALU ops
@@ -151,6 +152,9 @@ public class Processor {
 		return result;
 	}
 	
+	/*
+	 * This function converts a byte array into a readable (and print-friendly) String of data.
+	 */
 	public String bytes2String(byte[] bytes) {
 		StringBuilder sb = new StringBuilder();
 		StringBuilder temp = null;
@@ -170,6 +174,9 @@ public class Processor {
 		return sb.toString();
 	}
 	
+	/*
+	 * This function inserts spaces into a modified (as per the README) float, to better distinguish its components.
+	 */
 	public String formatFloatStr(String flt) {
 		StringBuilder sb = new StringBuilder(flt);
 		sb.insert(9, " ");
@@ -178,6 +185,9 @@ public class Processor {
 		return sb.toString();
 	}
 	
+	/*
+	 * Converts a boolean flag into a "1" or "0" string for ease of printing to the console.
+	 */
 	public String isFlagged(boolean flag) {
 		if (flag) return "1";
 		else return "0";
